@@ -87,3 +87,30 @@ def concat_context(meta, k: int = 3, step_s: float = 1.0, tol: float = 1e-3):
 def build_context_windows(X: np.ndarray, idx: np.ndarray) -> np.ndarray:
     """Concatenate the windows listed in each row of idx along time: (M, F, k*T)."""
     return np.concatenate([np.asarray(X[idx[:, j]], dtype=np.float32) for j in range(idx.shape[1])], axis=2)
+
+
+def context_indices_padded(meta, k: int = 3, step_s: float = 1.0, tol: float = 1e-3) -> np.ndarray:
+    """For every window, the indices of the windows at t, t+step, ..., t+(k-1)*step of the same track.
+
+    When a later window is missing (end of track or an occluded stretch that was dropped) the last available window of the
+    chain is repeated, the usual replication padding of sequence models. Every window is kept, so results stay
+    comparable with single-window arms; the share of padded slots is returned by padded_share()."""
+    key = (meta.file_name.astype(str) + "|" + meta.subject.astype(str)).to_numpy()
+    t = meta.t_start.to_numpy(dtype=float)
+    lookup = {(key[i], int(round(t[i] / tol))): i for i in range(len(meta))}
+    idx = np.empty((len(meta), k), dtype=int)
+    for i in range(len(meta)):
+        last = i
+        idx[i, 0] = i
+        for j in range(1, k):
+            nxt = lookup.get((key[i], int(round((t[i] + j * step_s) / tol))))
+            if nxt is not None:
+                last = nxt
+            idx[i, j] = last
+    return idx
+
+
+def padded_share(idx: np.ndarray) -> float:
+    """Share of context slots that repeat an earlier window instead of holding a new one."""
+    dup = (idx[:, 1:] == idx[:, :-1]).sum()
+    return float(dup / max(idx[:, 1:].size, 1))

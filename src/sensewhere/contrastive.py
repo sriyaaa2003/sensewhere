@@ -30,6 +30,8 @@ def sample_pairs(track_ids: np.ndarray, batch_tracks: int, rng: np.random.Genera
     uniq, inv = np.unique(track_ids, return_inverse=True)
     members = [np.flatnonzero(inv == k) for k in range(len(uniq))]
     ok = [k for k, m in enumerate(members) if len(m) >= 2]
+    if not ok:
+        raise ValueError("no track has two windows: track-contrastive pretraining needs positives")
     pick = rng.choice(ok, size=min(batch_tracks, len(ok)), replace=False)
     a, b = [], []
     for k in pick:
@@ -82,5 +84,7 @@ def pretrain_contrastive(
         if (s + 1) % 50 == 0:
             losses.append(float(np.mean(run)))
             run = []
+    if run:
+        losses.append(float(np.mean(run)))
     backbone.cpu()
     return losses

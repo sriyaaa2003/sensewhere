@@ -80,3 +80,20 @@ def test_context_windows_have_k_times_the_length():
     out = reprs.build_context_windows(X, idx)
     assert out.shape == (2, 8, 30)
     assert np.array_equal(out[0, :, 10:20], X[1])
+
+
+def test_padded_context_keeps_every_window_and_repeats_the_last_available_one():
+    rows = [dict(file_name="f", subject=1, t_start=t) for t in (0.0, 1.0, 5.0)]
+    meta = pd.DataFrame(rows)
+    idx = reprs.context_indices_padded(meta, k=3)
+    assert idx.shape == (3, 3)
+    assert idx[0].tolist() == [0, 1, 1]      # 2.0 missing: repeat window at 1.0
+    assert idx[1].tolist() == [1, 1, 1]
+    assert idx[2].tolist() == [2, 2, 2]
+    assert reprs.padded_share(idx) == pytest.approx(5 / 6)
+
+
+def test_padded_context_never_crosses_tracks():
+    rows = [dict(file_name="f", subject=1, t_start=0.0), dict(file_name="f", subject=2, t_start=1.0)]
+    idx = reprs.context_indices_padded(pd.DataFrame(rows), k=2)
+    assert idx[0].tolist() == [0, 0]

@@ -128,3 +128,14 @@ def test_coverage_drops_under_shift_and_is_reported_honestly():
     assert conformal.evaluate_sets(conformal.prediction_sets(easy, q), y)["coverage"] > 0.88
     shifted = hard.copy(); shifted[: n // 2] = shifted[: n // 2][:, ::-1]  # half the windows now point the wrong way
     assert conformal.evaluate_sets(conformal.prediction_sets(shifted, q), y)["coverage"] < 0.88
+
+
+def test_sample_pairs_fails_loudly_when_no_track_has_two_windows():
+    with pytest.raises(ValueError):
+        contrastive.sample_pairs(np.array(["a", "b", "c"]), 2, np.random.default_rng(0))
+
+
+def test_contrastive_reports_a_loss_even_for_fewer_than_fifty_steps():
+    X, y, keys, t = _bags_data(20, 4)
+    losses = contrastive.pretrain_contrastive(models.Backbone(widths=(4, 8), feat_dim=8), X, keys, steps=7, batch_tracks=8)
+    assert len(losses) == 1 and np.isfinite(losses[0])

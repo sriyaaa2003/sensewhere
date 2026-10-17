@@ -39,7 +39,7 @@ for k in range(120):
     x = rng.normal(15, 2.0, (F, T)).astype(np.float32)
     x[20:26] += 12
     Xu.append(x.astype(np.float16))
-    ul.append(dict(file_name=2025052000000 + k, track=str(k), date=20250520, site=site, split="train", t_start=0.0))
+    ul.append(dict(file_name=2025052000000 + k // 2, track=str(k // 2), date=20250520, site=site, split="train", t_start=0.0))
 np.save(out / "ul_windows_raw.npy", np.stack(Xu))
 pd.DataFrame(ul).to_csv(out / "ul_meta.csv", index=False)
 print("wrote", out, len(rows), "labeled windows,", len(ul), "unlabeled windows")
