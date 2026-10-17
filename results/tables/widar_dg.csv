@@ -1,0 +1,5 @@
+training method,balanced accuracy [95% CI over location x seed cells],paired difference vs ERM [95% CI]
+coral,"0.744 [0.731, 0.757]","+0.014 [+0.006, +0.023]"
+dann,"0.744 [0.732, 0.757]","+0.014 [+0.006, +0.023]"
+erm,"0.730 [0.714, 0.744]",reference
+groupdro,"0.738 [0.726, 0.751]","+0.008 [+0.000, +0.018]"

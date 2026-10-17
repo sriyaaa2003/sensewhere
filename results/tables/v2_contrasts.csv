@@ -1,0 +1,6 @@
+contrast,A,B,A [95% CI],B [95% CI],A - B [95% CI]
+track pooling alone,erm|none|vote,erm|none|window,"0.756 [0.707, 0.794]","0.728 [0.688, 0.759]","0.028 [0.008, 0.044]"
+"augmentation, window readout",erm_aug|none|window,erm|none|window,"0.735 [0.701, 0.764]","0.728 [0.688, 0.759]","0.007 [-0.007, 0.025]"
+"BatchNorm-only SHOT on the transplant model, window readout",erm_floor|shot_bn|window,erm_floor|none|window,"0.735 [0.694, 0.765]","0.720 [0.680, 0.750]","0.015 [0.000, 0.026]"
+whole pipeline: transplant + BatchNorm-only SHOT + track pooling vs plain window,erm_floor|shot_bn|vote,erm|none|window,"0.791 [0.736, 0.830]","0.728 [0.688, 0.759]","0.063 [0.034, 0.088]"
+whole pipeline vs plain model with track pooling only,erm_floor|shot_bn|vote,erm|none|vote,"0.791 [0.736, 0.830]","0.756 [0.707, 0.794]","0.035 [0.007, 0.065]"

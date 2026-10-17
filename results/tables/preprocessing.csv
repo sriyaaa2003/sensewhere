@@ -1,0 +1,5 @@
+preprocessing,balanced accuracy [95% CI over site x seed cells]
+"per-window standardised, static band removed (default)","0.725 [0.703, 0.748]"
+no static-band removal,"0.723 [0.693, 0.745]"
+no normalisation (raw dB),"0.723 [0.693, 0.754]"
+median/MAD instead of mean/std,"0.699 [0.658, 0.742]"

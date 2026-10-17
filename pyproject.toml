@@ -1,0 +1,19 @@
+[project]
+name = "sensewhere"
+version = "0.1.0"
+description = "Does a radio-sensing classifier survive a new site? Cross-location generalisation, source-free adaptation and modular class extension on DopplerWild and Widar 3.0."
+requires-python = ">=3.11"
+dependencies = ["numpy", "pandas", "scipy", "scikit-learn", "torch", "pyyaml", "pydantic", "matplotlib"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

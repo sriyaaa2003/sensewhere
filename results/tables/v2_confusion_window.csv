@@ -1,0 +1,4 @@
+,predicted normal_walking,predicted dual-hand load,predicted on wheels
+true normal_walking,0.627,0.355,0.019
+true dual-hand load,0.322,0.646,0.033
+true on wheels,0.061,0.027,0.912

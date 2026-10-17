@@ -1,0 +1,1 @@
+{"id": "saf2003/sensewhere-build", "title": "sensewhere build", "code_file": "build.py", "language": "python", "kernel_type": "script", "is_private": true, "enable_gpu": false, "enable_internet": false, "dataset_sources": ["dopplerwild/dopplerwild", "saf2003/sensewhere-src"], "competition_sources": [], "kernel_sources": []}

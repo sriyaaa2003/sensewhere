@@ -1,0 +1,1 @@
+{"id": "saf2003/sensewhere-stage5", "title": "sensewhere stage5", "code_file": "stage5.py", "language": "python", "kernel_type": "script", "is_private": true, "enable_gpu": false, "enable_internet": false, "dataset_sources": ["saf2003/sensewhere-src"], "competition_sources": [], "kernel_sources": ["saf2003/sensewhere-build"]}

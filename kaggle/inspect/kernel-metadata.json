@@ -1,0 +1,13 @@
+{
+  "id": "saf2003/sensewhere-inspect",
+  "title": "sensewhere inspect",
+  "code_file": "inspect.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": ["dopplerwild/dopplerwild-preview", "mohoremukhopadhyay/widar-3-0-bvp"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

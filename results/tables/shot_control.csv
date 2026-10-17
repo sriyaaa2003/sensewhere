@@ -1,0 +1,11 @@
+adapted on,method,balanced accuracy,change vs no adaptation [95% CI]
+balanced,adabn,0.708,"-0.021 [-0.036, -0.007]"
+balanced,shot_div0.0,0.594,"-0.135 [-0.195, -0.083]"
+balanced,shot_div0.3,0.585,"-0.144 [-0.201, -0.094]"
+balanced,shot_div1.0,0.591,"-0.138 [-0.178, -0.100]"
+balanced,tent_e1,0.728,"-0.000 [-0.009, +0.006]"
+natural,adabn,0.727,"-0.001 [-0.017, +0.016]"
+natural,shot_div0.0,0.507,"-0.222 [-0.264, -0.184]"
+natural,shot_div0.3,0.579,"-0.150 [-0.186, -0.116]"
+natural,shot_div1.0,0.556,"-0.173 [-0.245, -0.105]"
+natural,tent_e1,0.732,"+0.003 [-0.005, +0.012]"

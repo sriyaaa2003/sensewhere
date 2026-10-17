@@ -1,0 +1,45 @@
+[{"stream_name":"stdout","time":11.673157271000001,"data":"motion 4947 single-hand new-class windows 3395 {'A': 1561, 'B': 174, 'C': 1132, 'D': 528}\n"}
+,{"stream_name":"stdout","time":35.045922871,"data":"0 A flat 23 s\n"}
+,{"stream_name":"stdout","time":48.079490274,"data":"0 A hier 36 s\n"}
+,{"stream_name":"stdout","time":59.534350386,"data":"0 A moe 48 s\n"}
+,{"stream_name":"stdout","time":81.407365288,"data":"0 B flat 70 s\n"}
+,{"stream_name":"stdout","time":95.702156721,"data":"0 B hier 84 s\n"}
+,{"stream_name":"stdout","time":108.865656724,"data":"0 B moe 97 s\n"}
+,{"stream_name":"stdout","time":121.631709319,"data":"0 C flat 110 s\n"}
+,{"stream_name":"stdout","time":140.780187955,"data":"0 C hier 129 s\n"}
+,{"stream_name":"stdout","time":156.350359431,"data":"0 C moe 145 s\n"}
+,{"stream_name":"stdout","time":172.071540564,"data":"0 D flat 160 s\n"}
+,{"stream_name":"stdout","time":188.751448664,"data":"0 D hier 177 s\n"}
+,{"stream_name":"stdout","time":202.702191852,"data":"0 D moe 191 s\n"}
+,{"stream_name":"stdout","time":217.319811564,"data":"1 A flat 206 s\n"}
+,{"stream_name":"stdout","time":236.011021054,"data":"1 A hier 224 s\n"}
+,{"stream_name":"stdout","time":248.709825183,"data":"1 A moe 237 s\n"}
+,{"stream_name":"stdout","time":273.366709391,"data":"1 B flat 262 s\n"}
+,{"stream_name":"stdout","time":290.24746818,"data":"1 B hier 279 s\n"}
+,{"stream_name":"stdout","time":308.410774352,"data":"1 B moe 297 s\n"}
+,{"stream_name":"stdout","time":321.901585179,"data":"1 C flat 310 s\n"}
+,{"stream_name":"stdout","time":337.62849961,"data":"1 C hier 326 s\n"}
+,{"stream_name":"stdout","time":352.453081657,"data":"1 C moe 341 s\n"}
+,{"stream_name":"stdout","time":370.894816458,"data":"1 D flat 359 s\n"}
+,{"stream_name":"stdout","time":385.083666163,"data":"1 D hier 373 s\n"}
+,{"stream_name":"stdout","time":405.118595073,"data":"1 D moe 393 s\n"}
+,{"stream_name":"stdout","time":422.448575575,"data":"2 A flat 411 s\n"}
+,{"stream_name":"stdout","time":440.770379343,"data":"2 A hier 429 s\n"}
+,{"stream_name":"stdout","time":452.310061043,"data":"2 A moe 441 s\n"}
+,{"stream_name":"stdout","time":474.659272566,"data":"2 B flat 463 s\n"}
+,{"stream_name":"stdout","time":489.719416713,"data":"2 B hier 478 s\n"}
+,{"stream_name":"stdout","time":502.545552386,"data":"2 B moe 491 s\n"}
+,{"stream_name":"stdout","time":512.349661327,"data":"2 C flat 501 s\n"}
+,{"stream_name":"stdout","time":534.39444494,"data":"2 C hier 523 s\n"}
+,{"stream_name":"stdout","time":549.888257273,"data":"2 C moe 538 s\n"}
+,{"stream_name":"stdout","time":569.395824588,"data":"2 D flat 558 s\n"}
+,{"stream_name":"stdout","time":588.790169011,"data":"2 D hier 577 s\n"}
+,{"stream_name":"stdout","time":603.14270812,"data":"2 D moe 591 s\n"}
+,{"stream_name":"stdout","time":603.169256867,"data":"done 591 s\n"}
+,{"stream_name":"stderr","time":609.853660691,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":609.853689194,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":610.165972828,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":610.166001924,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":611.014920778,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":612.102552692,"data":"[NbConvertApp] Writing 305846 bytes to __results__.html\n"}
+]

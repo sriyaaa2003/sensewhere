@@ -1,0 +1,30 @@
+[{"stream_name":"stdout","time":10.101164783,"data":"labeled recordings 374 with \u003e1 location: 0\n"}
+,{"stream_name":"stdout","time":10.113105176,"data":"unlabeled tracks 2237 recordings 941 split {'train': 2036, 'val': 201}\n"}
+,{"stream_name":"stdout","time":10.113894885,"data":"tracks whose recording has a labeled site: 2 {nan: 2235, 'C': 2}\n"}
+,{"stream_name":"stdout","time":10.124683811,"data":"duration {'count': 2237.0, 'mean': 6.2, 'std': 2.3, 'min': 3.0, '25%': 4.1, '50%': 5.7, '75%': 8.2, 'max': 10.0} uD_length {'count': 2237.0, 'mean': 557.0, 'std': 208.0, 'min': 271.0, '25%': 369.0, '50%': 515.0, '75%': 737.0, 'max': 903.0}\n"}
+,{"stream_name":"stdout","time":10.125812961,"data":"date -\u003e sites (labeled):\n"}
+,{"stream_name":"stdout","time":10.128622767,"data":"date\n"}
+,{"stream_name":"stdout","time":10.128643764,"data":"20250523    [A]\n"}
+,{"stream_name":"stdout","time":10.128648504,"data":"20250528    [C]\n"}
+,{"stream_name":"stdout","time":10.128651065,"data":"20250611    [B]\n"}
+,{"stream_name":"stdout","time":10.128653469,"data":"20250612    [D]\n"}
+,{"stream_name":"stdout","time":10.128655909,"data":"20250619    [A]\n"}
+,{"stream_name":"stdout","time":10.129505115,"data":"unlabeled dates:\n"}
+,{"stream_name":"stdout","time":10.132016588,"data":"date\n"}
+,{"stream_name":"stdout","time":10.13203893,"data":"20250523     89\n"}
+,{"stream_name":"stdout","time":10.132043093,"data":"20250528    201\n"}
+,{"stream_name":"stdout","time":10.132046078,"data":"20250531    278\n"}
+,{"stream_name":"stdout","time":10.132048622,"data":"20250611    575\n"}
+,{"stream_name":"stdout","time":10.132050975,"data":"20250612    163\n"}
+,{"stream_name":"stdout","time":10.132053432,"data":"20250613    346\n"}
+,{"stream_name":"stdout","time":10.132055803,"data":"20250619     96\n"}
+,{"stream_name":"stdout","time":10.132059354999999,"data":"20250620    489\n"}
+,{"stream_name":"stdout","time":10.135869894,"data":"unlabeled tracks with site inferable by date: 1124 {nan: 1113, 'B': 575, 'C': 201, 'A': 185, 'D': 163}\n"}
+,{"stream_name":"stdout","time":18.323392545,"data":"done\n"}
+,{"stream_name":"stderr","time":21.638947376,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":21.638992471,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":22.010321637,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":22.01037343,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":23.705406414,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":25.014633443,"data":"[NbConvertApp] Writing 301654 bytes to __results__.html\n"}
+]
