@@ -28,6 +28,37 @@ class Backbone(nn.Module):
         return F.relu(self.proj(h))
 
 
+class TorchvisionBackbone(nn.Module):
+    """ResNet-18 or MobileNetV2 (trained from scratch, no pretrained weights) with a spectrogram-friendly stem and a
+    64-d projection, interchangeable with Backbone. Both contain BatchNorm, so adaptation methods still apply."""
+
+    def __init__(self, kind: str = "resnet18", in_ch: int = 1, feat_dim: int = 64):
+        super().__init__()
+        import torchvision
+
+        if kind == "resnet18":
+            m = torchvision.models.resnet18(weights=None)
+            m.conv1 = nn.Conv2d(in_ch, 64, 7, 2, 3, bias=False)
+            width = m.fc.in_features
+            m.fc = nn.Identity()
+            self.net = m
+        elif kind == "mobilenetv2":
+            m = torchvision.models.mobilenet_v2(weights=None)
+            first = m.features[0][0]
+            m.features[0][0] = nn.Conv2d(in_ch, first.out_channels, 3, 2, 1, bias=False)
+            width = m.last_channel
+            m.classifier = nn.Identity()
+            self.net = m
+        else:
+            raise ValueError(kind)
+        self.kind = kind
+        self.proj = nn.Linear(width, feat_dim)
+        self.feat_dim = feat_dim
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return F.relu(self.proj(self.net(x)))
+
+
 class FlatHead(nn.Module):
     def __init__(self, dim: int, n_classes: int):
         super().__init__()

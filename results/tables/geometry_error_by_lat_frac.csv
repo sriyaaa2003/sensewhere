@@ -1,0 +1,4 @@
+class,q1 (lowest),q2,q3,q4 (highest)
+dual-hand load,0.584,0.592,0.619,0.577
+on wheels,0.911,0.957,0.936,0.921
+walking,0.684,0.718,0.585,0.516

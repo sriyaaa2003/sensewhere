@@ -9,7 +9,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from . import dg, floor
+from . import dg, floor, reprs
 from .metrics import balanced_accuracy
 from .models import Classifier
 
@@ -30,6 +30,9 @@ class TrainConfig:
     patience: int = 6              # epochs without source-validation improvement before stopping
     augment: bool = False          # basic time/Doppler shift, gain and noise
     legacy_aug: bool = False       # v1 behaviour: augment for every method except plain erm (kept so v1 results can be rerun)
+    stretch: bool = False          # random Doppler-axis stretch (simulates a change of approach angle)
+    stretch_range: tuple = (0.7, 1.4)
+    aux_weight: float = 0.0        # weight of an auxiliary classification task trained on the same features (e.g. 12 fine activities)
     floor_transplant: bool = False # swap the site noise-floor profile for another training site's (needs floor_profiles)
     floor_profiles: object = None  # tensor (n_domains, F) of per-site background profiles in the cached windows' units
     freeze_bn: bool = False        # keep BatchNorm in eval mode (statistics frozen) while fine-tuning a frozen backbone
@@ -81,6 +84,8 @@ def fit(
     cfg: TrainConfig,
     n_domains: int | None = None,
     sample_weight: np.ndarray | None = None,
+    aux_y: np.ndarray | None = None,
+    aux_classes: int = 0,
 ) -> tuple[Classifier, list[dict]]:
     """Train on (X, y, domains); keep the epoch with the best balanced accuracy on the SOURCE validation set."""
     torch.manual_seed(cfg.seed)
@@ -94,6 +99,11 @@ def fit(
         disc = dg.DomainDiscriminator(model.backbone.feat_dim, n_domains).to(dev)
         params += list(disc.parameters())
     dro = dg.GroupDRO(n_domains, cfg.dro_step) if cfg.method == "groupdro" else None
+    aux_head = None
+    if cfg.aux_weight > 0 and aux_y is not None:
+        aux_head = nn.Linear(model.backbone.feat_dim, aux_classes).to(dev)
+        params += list(aux_head.parameters())
+        aux_t = torch.from_numpy(aux_y).long()
     opt = torch.optim.AdamW([p for p in params if p.requires_grad], lr=cfg.lr, weight_decay=cfg.weight_decay)
     cw = class_weights(y, n_classes).to(dev) if cfg.class_balanced else None
     yt = torch.from_numpy(y).long()
@@ -122,6 +132,10 @@ def fit(
                 xb = floor.transplant(xb, prof[db], prof[donor])
             if cfg.augment or (cfg.legacy_aug and cfg.method != "erm"):
                 xb = augment(xb, cfg, g)
+            if cfg.stretch:
+                lo, hi = np.log(cfg.stretch_range[0]), np.log(cfg.stretch_range[1])
+                fac = torch.exp(lo + (hi - lo) * torch.rand(len(xb), generator=g)).to(dev)
+                xb = reprs.stretch_doppler(xb, fac)
             logp, feats = model(xb, return_feats=True)
             per = F.nll_loss(logp, yb, weight=cw, reduction="none")
             if sw is not None:
@@ -136,6 +150,8 @@ def fit(
                 lam = 2 / (1 + np.exp(-10 * step / total_steps)) - 1
                 loss = loss + cfg.method_weight * F.cross_entropy(disc(feats, float(lam)), db)
             loss = loss + cfg.moe_aux_weight * model.head.aux_loss().to(dev)
+            if aux_head is not None:
+                loss = loss + cfg.aux_weight * F.cross_entropy(aux_head(feats), aux_t[idx].to(dev))
             opt.zero_grad()
             loss.backward()
             opt.step()

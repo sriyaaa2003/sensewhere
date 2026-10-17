@@ -30,8 +30,11 @@ def encode(meta: pd.DataFrame, level: str, classes: list[str] | None = None) -> 
     return meta[col].map(idx).to_numpy()
 
 
-def build_model(head: str, level: str, feat_dim: int = 64, n_experts: int = 4, top_k: int = 2, in_ch: int = 1, n_classes: int | None = None, hierarchy: data.Hierarchy | None = None, input_norm: bool = False) -> models.Classifier:
-    bb = models.Backbone(in_ch=in_ch, widths=(16, 32, 64, 64), feat_dim=feat_dim)
+def build_model(head: str, level: str, feat_dim: int = 64, n_experts: int = 4, top_k: int = 2, in_ch: int = 1, n_classes: int | None = None, hierarchy: data.Hierarchy | None = None, input_norm: bool = False, backbone: str = "cnn") -> models.Classifier:
+    if backbone == "cnn":
+        bb = models.Backbone(in_ch=in_ch, widths=(16, 32, 64, 64), feat_dim=feat_dim)
+    else:
+        bb = models.TorchvisionBackbone(backbone, in_ch=in_ch, feat_dim=feat_dim)
     h = hierarchy or data.base_hierarchy()
     n = n_classes or len(LEVELS[level])
     if head == "hier" and level != "atomic" and hierarchy is None:
@@ -83,21 +86,22 @@ def make_cell(X, meta: pd.DataFrame, split: Split, level: str, device: str = "cp
     )
 
 
-def run_method(cell: Cell, level: str, head: str, method: str, seed: int, epochs: int, device: str = "cpu", in_ch: int = 1, n_classes: int | None = None, hierarchy: data.Hierarchy | None = None, input_norm: bool = False, profiles: dict | None = None, init: models.Backbone | None = None, **kw):
+def run_method(cell: Cell, level: str, head: str, method: str, seed: int, epochs: int, device: str = "cpu", in_ch: int = 1, n_classes: int | None = None, hierarchy: data.Hierarchy | None = None, input_norm: bool = False, profiles: dict | None = None, init: models.Backbone | None = None,
+               backbone: str = "cnn", head_kw: dict | None = None, aux_y: np.ndarray | None = None, aux_classes: int = 0, **kw):
     """Train one model; return (model, predictions on target, log).
 
     profiles: {site: per-bin background vector} for noise-floor transplant (rows follow cell.domain_sites).
     init: a pretrained Backbone whose convolutional trunk initialises the classifier."""
     n = n_classes or len(LEVELS[level])
     torch.manual_seed(seed)
-    m = build_model(head, level, in_ch=in_ch, n_classes=n_classes, hierarchy=hierarchy, input_norm=input_norm)
+    m = build_model(head, level, in_ch=in_ch, n_classes=n_classes, hierarchy=hierarchy, input_norm=input_norm, backbone=backbone, **(head_kw or {}))
     if init is not None:
         from .mae import copy_encoder
         copy_encoder(init, m.backbone)
     if profiles is not None:
         kw["floor_profiles"] = torch.from_numpy(np.stack([profiles[s_] for s_ in cell.domain_sites])).float()
     cfg = train.TrainConfig(method=method, epochs=epochs, seed=seed, device=device, **kw)
-    m, log = train.fit(m, cell.Xtr, cell.ytr, cell.dtr, cell.Xva, cell.yva, n, cfg, n_domains=cell.n_domains)
+    m, log = train.fit(m, cell.Xtr, cell.ytr, cell.dtr, cell.Xva, cell.yva, n, cfg, n_domains=cell.n_domains, aux_y=aux_y, aux_classes=aux_classes)
     pred, _ = train.predict(m, cell.Xte, device=device)
     return m, pred, log
 

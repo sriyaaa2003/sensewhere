@@ -73,3 +73,15 @@ def to_tensor(X: np.ndarray, idx: np.ndarray, device: str = "cpu") -> torch.Tens
     """(N, F, T) windows get a channel axis; (N, C, H, W) windows (e.g. Widar frames as channels) are used as they are."""
     t = torch.from_numpy(np.asarray(X[idx], dtype=np.float32))
     return (t.unsqueeze(1) if t.ndim == 3 else t).to(device)
+
+
+# Two alternative trees over the three motion classes (leaf order = LOAD_CLASSES): which split is made first changes
+# which confusion each local classifier has to resolve.
+HIER_FOOT_FIRST = Hierarchy(
+    {"root": ["foot", "On Wheels"], "foot": ["normal_walking", "Dual-hand Load"]},
+    ["normal_walking", "Dual-hand Load", "On Wheels"],
+)
+HIER_WALK_FIRST = Hierarchy(
+    {"root": ["normal_walking", "other"], "other": ["Dual-hand Load", "On Wheels"]},
+    ["normal_walking", "Dual-hand Load", "On Wheels"],
+)

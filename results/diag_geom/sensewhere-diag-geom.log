@@ -1,0 +1,59 @@
+[{"stream_name":"stdout","time":13.839273808,"data":"844 tracks; 631 with a motion label\n"}
+,{"stream_name":"stdout","time":13.900802418,"data":"location                 A           B           C           D\n"}
+,{"stream_name":"stdout","time":13.900839271,"data":"speed    count  313.000000  147.000000  230.000000  154.000000\n"}
+,{"stream_name":"stdout","time":13.900844859,"data":"         mean     1.497021    2.310517    1.778397    1.649816\n"}
+,{"stream_name":"stdout","time":13.900848736,"data":"         std      0.860788    1.924386    1.252898    1.042364\n"}
+,{"stream_name":"stdout","time":13.900852432,"data":"         min      0.565567    0.333038    0.782493    0.458947\n"}
+,{"stream_name":"stdout","time":13.900856675,"data":"         25%      1.171063    0.906751    1.279364    1.145243\n"}
+,{"stream_name":"stdout","time":13.900860507,"data":"         50%      1.305911    1.250016    1.399044    1.279315\n"}
+,{"stream_name":"stdout","time":13.900864322,"data":"         75%      1.465025    3.947998    1.589796    1.519602\n"}
+,{"stream_name":"stdout","time":13.900868219,"data":"         max      6.444572    7.637280    9.118213    6.210536\n"}
+,{"stream_name":"stdout","time":13.900872808999999,"data":"lat_frac count  313.000000  147.000000  230.000000  154.000000\n"}
+,{"stream_name":"stdout","time":13.900877212,"data":"         mean     0.516003    0.718594    0.474388    0.575140\n"}
+,{"stream_name":"stdout","time":13.900881016,"data":"         std      0.281595    0.272489    0.242840    0.258960\n"}
+,{"stream_name":"stdout","time":13.90088518,"data":"         min      0.015571    0.089325    0.035252    0.056136\n"}
+,{"stream_name":"stdout","time":13.900889659,"data":"         25%      0.290499    0.508000    0.275565    0.358319\n"}
+,{"stream_name":"stdout","time":13.900893546,"data":"         50%      0.487042    0.822941    0.467719    0.558845\n"}
+,{"stream_name":"stdout","time":13.900897695,"data":"         75%      0.754482    0.958020    0.667504    0.810355\n"}
+,{"stream_name":"stdout","time":13.900901608,"data":"         max      0.998298    0.998285    0.995792    0.990937\n"}
+,{"stream_name":"stdout","time":13.900905596,"data":"rad_frac count  313.000000  147.000000  230.000000  154.000000\n"}
+,{"stream_name":"stdout","time":13.900909601,"data":"         mean     0.748892    0.538904    0.808002    0.708744\n"}
+,{"stream_name":"stdout","time":13.90091338,"data":"         std      0.257102    0.299606    0.194929    0.240629\n"}
+,{"stream_name":"stdout","time":13.900917248,"data":"         min      0.058315    0.048121    0.089447    0.088109\n"}
+,{"stream_name":"stdout","time":13.900920951,"data":"         25%      0.605705    0.249269    0.714629    0.533649\n"}
+,{"stream_name":"stdout","time":13.900924763999999,"data":"         50%      0.857988    0.523206    0.874671    0.775831\n"}
+,{"stream_name":"stdout","time":13.900928874,"data":"         75%      0.956108    0.841403    0.955060    0.919624\n"}
+,{"stream_name":"stdout","time":13.900932711,"data":"         max      0.999855    0.993456    0.998836    0.996985\n"}
+,{"stream_name":"stdout","time":13.900936487,"data":"dist     count  313.000000  147.000000  230.000000  154.000000\n"}
+,{"stream_name":"stdout","time":13.900940365,"data":"         mean     9.312200   11.159433    9.438315    8.998213\n"}
+,{"stream_name":"stdout","time":13.900944583,"data":"         std      3.566487    3.250249    3.364816    3.412452\n"}
+,{"stream_name":"stdout","time":13.900948593,"data":"         min      2.444190    1.823942    1.726100    2.039840\n"}
+,{"stream_name":"stdout","time":13.900952535,"data":"         25%      6.476221    9.472410    6.963350    6.280305\n"}
+,{"stream_name":"stdout","time":13.900956291,"data":"         50%      9.458481   11.813200    9.401586    8.494573\n"}
+,{"stream_name":"stdout","time":13.900978414,"data":"         75%     12.352138   13.693916   12.046112   12.055652\n"}
+,{"stream_name":"stdout","time":13.900984431,"data":"         max     15.407951   15.712281   15.213642   14.827409\n"}
+,{"stream_name":"stdout","time":13.905887764,"data":"                           speed  lat_frac   dist\n"}
+,{"stream_name":"stdout","time":13.905924575,"data":"location activity_load                           \n"}
+,{"stream_name":"stdout","time":13.905930088,"data":"A        Dual-hand Load     1.17      0.47   8.63\n"}
+,{"stream_name":"stdout","time":13.905934911,"data":"         On Wheels          4.25      0.53   8.56\n"}
+,{"stream_name":"stdout","time":13.905939597,"data":"         Single-hand Load   1.30      0.50   9.20\n"}
+,{"stream_name":"stdout","time":13.90594409,"data":"         normal_walking     1.32      0.57   9.56\n"}
+,{"stream_name":"stdout","time":13.905948924,"data":"B        Dual-hand Load     1.15      0.65   9.72\n"}
+,{"stream_name":"stdout","time":13.905953318,"data":"         On Wheels          5.10      0.97  14.01\n"}
+,{"stream_name":"stdout","time":13.905957698,"data":"         Single-hand Load   1.26      0.66   8.71\n"}
+,{"stream_name":"stdout","time":13.905962149,"data":"         normal_walking     0.94      0.48   9.85\n"}
+,{"stream_name":"stdout","time":13.905966811999999,"data":"C        Dual-hand Load     1.31      0.48  10.06\n"}
+,{"stream_name":"stdout","time":13.905971257000001,"data":"         On Wheels          5.09      0.46   8.65\n"}
+,{"stream_name":"stdout","time":13.905975775,"data":"         Single-hand Load   1.40      0.45   9.23\n"}
+,{"stream_name":"stdout","time":13.905980933,"data":"         normal_walking     1.43      0.45   9.38\n"}
+,{"stream_name":"stdout","time":13.905985752,"data":"D        Dual-hand Load     1.11      0.61   8.29\n"}
+,{"stream_name":"stdout","time":13.905990316,"data":"         On Wheels          4.02      0.54   8.84\n"}
+,{"stream_name":"stdout","time":13.905995423,"data":"         Single-hand Load   1.28      0.59   9.56\n"}
+,{"stream_name":"stdout","time":13.906000088999999,"data":"         normal_walking     1.33      0.60   8.76\n"}
+,{"stream_name":"stderr","time":17.350682557,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":17.350836173,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":17.961890582,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":17.961923057,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":20.748638591,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":22.467399994,"data":"[NbConvertApp] Writing 283195 bytes to __results__.html\n"}
+]

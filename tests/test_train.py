@@ -148,3 +148,28 @@ def test_fit_with_fewer_windows_than_a_batch_still_takes_steps():
     Xv, yv, _ = _toy(30, seed=1)
     m, log = train.fit(_model(), X, y, d, Xv, yv, 3, train.TrainConfig(epochs=3, batch_size=256), n_domains=2)
     assert log[0]["loss"] > 0
+
+
+def test_stretch_augmentation_and_auxiliary_task_train():
+    X, y, d = _toy(64)
+    Xv, yv, _ = _toy(30, seed=1)
+    aux = (y + 1) % 3
+    cfg = train.TrainConfig(epochs=2, batch_size=32, stretch=True, aux_weight=0.5)
+    m, log = train.fit(_model(), X, y, d, Xv, yv, 3, cfg, n_domains=2, aux_y=aux, aux_classes=3)
+    assert all(np.isfinite(r["loss"]) for r in log)
+
+
+def test_torchvision_backbones_are_drop_in_and_have_batchnorm():
+    for kind in ("resnet18", "mobilenetv2"):
+        bb = models.TorchvisionBackbone(kind, in_ch=1, feat_dim=16)
+        m = models.Classifier(bb, models.FlatHead(16, 3))
+        out = m(torch.randn(2, 1, 64, 90))
+        assert out.shape == (2, 3)
+        assert any(isinstance(x, torch.nn.BatchNorm2d) for x in m.modules())
+
+
+def test_alternative_hierarchies_are_valid_trees():
+    for h in (data.HIER_FOOT_FIRST, data.HIER_WALK_FIRST):
+        head = models.HierHead(8, h.tree, h.leaves)
+        lp = head(torch.randn(4, 8))
+        assert lp.shape == (4, 3) and torch.allclose(lp.exp().sum(1), torch.ones(4), atol=1e-5)
