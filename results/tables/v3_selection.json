@@ -1,6 +1,6 @@
 {
- "candidate": "base",
- "top_arm": "base",
+ "candidate": "con_src_long_ft",
+ "top_arm": "con_src_long_ft",
  "category_winners": {
   "B": "resnet18",
   "H": "hier_foot",

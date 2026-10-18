@@ -289,8 +289,14 @@ Letters: R representation, H head, M multitask, B backbone, T track-level model,
 | mil_attn_aligned | T | 0.664 [0.629, 0.698] | -0.124 [-0.155, -0.082] | n/a (track model) |
 | mil_attn_stretch | T | 0.688 [0.645, 0.725] | -0.100 [-0.132, -0.057] | n/a (track model) |
 | mil_gru | T | 0.724 [0.680, 0.767] | -0.064 [-0.098, -0.023] | n/a (track model) |
+| con_all_long_ft | ? | 0.795 [0.744, 0.837] | 0.007 [-0.016, 0.036] | 0.754 [0.717, 0.786] |
+| con_all_long_mil_attn | ? | 0.780 [0.734, 0.820] | -0.008 [-0.034, 0.025] | n/a (track model) |
+| con_all_t01_ft | ? | 0.781 [0.735, 0.817] | -0.007 [-0.033, 0.026] | 0.754 [0.718, 0.782] |
+| con_src_long_ft | ? | 0.797 [0.750, 0.832] | 0.009 [-0.012, 0.033] | 0.749 [0.713, 0.778] |
+| mil_attn_long | ? | 0.719 [0.676, 0.756] | -0.069 [-0.099, -0.033] | n/a (track model) |
+| mil_gru_long | ? | 0.734 [0.688, 0.773] | -0.054 [-0.084, -0.018] | n/a (track model) |
 
-Candidate selected by the pre-fixed rule: **base** (highest track-vote balanced accuracy 0.788 by `base`; ties within 0.005 go to the simpler arm). Category winners: {'B': 'resnet18', 'H': 'hier_foot', 'M': 'multitask_w05', 'P': 'con_all_ft', 'R': 'aligned', 'T': 'mil_attn'}.
+Candidate selected by the pre-fixed rule: **con_src_long_ft** (highest track-vote balanced accuracy 0.797 by `con_src_long_ft`; ties within 0.005 go to the simpler arm). Category winners: {'B': 'resnet18', 'H': 'hier_foot', 'M': 'multitask_w05', 'P': 'con_all_ft', 'R': 'aligned', 'T': 'mil_attn'}.
 
 
 Per-class recall (track vote) by arm and held-out site, to see where the walking vs dual-hand confusion moves (site B is where walkers are slower than carriers):
@@ -313,6 +319,10 @@ Per-class recall (track vote) by arm and held-out site, to see where the walking
 | ctx3 | B | 0.581 | 0.730 | 0.921 |
 | ctx3 | C | 0.901 | 0.342 | 1.000 |
 | ctx3 | D | 0.692 | 0.735 | 0.777 |
+| con_src_long_ft | A | 0.752 | 0.791 | 0.992 |
+| con_src_long_ft | B | 0.492 | 0.805 | 0.981 |
+| con_src_long_ft | C | 0.905 | 0.413 | 1.000 |
+| con_src_long_ft | D | 0.676 | 0.887 | 0.872 |
 
 ## v2-3. Adding the single-hand-load class (BatchNorm statistics now frozen with the backbone; prototype extension added)
 

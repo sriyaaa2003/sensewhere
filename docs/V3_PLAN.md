@@ -37,3 +37,12 @@ New idea, stage G (exploratory, seeds 0 to 2) and stage H (confirmatory, seeds 1
 * **Seed ensemble.** Average the log-probabilities of the models of the 5 confirmatory seeds before track pooling.
 
 Confirmatory hypotheses on seeds 10 to 14 (95% subject-clustered intervals; Bonferroni intervals reported): **H7** the chosen recalibration beats plain base with track pooling (mean over the 5 seeds' single models); **H8** the 5-seed ensemble beats the mean single model; **H9** the ensemble plus the chosen recalibration beats the mean single model. Conformal prediction sets are reported descriptively (coverage at the unseen site against the nominal level), with no hypothesis.
+
+## Addendum 2 (written after stage F, before its confirmation run)
+
+Stage F (longer track-model training, stronger contrastive pretext) finished. By the selection rule of the protocol the single highest arm is `con_src_long_ft` (track-contrastive pretraining for 4000 steps on the unlabeled recordings of the source sites only, then window-level fine-tuning; 0.797 against 0.788 for `base`, interval for the difference spanning zero). The best track-level model is `mil_gru_long` (0.734, clearly below `base`). Both are confirmed on the fresh seeds 10 to 14, against the stage H base models (same seeds, same splits):
+
+* **H5** `con_src_long_ft` beats `base` in track-vote balanced accuracy (probability-pooled track vote for both).
+* **H6** `mil_gru_long` beats `base`.
+
+The multiple-comparison family now has five tests (H5 to H9); Bonferroni intervals at 99% are reported next to the 95% intervals. Combining the pretrained model with boundary recalibration is reported descriptively only.

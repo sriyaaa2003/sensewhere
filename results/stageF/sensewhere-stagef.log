@@ -1,0 +1,44 @@
+[{"stream_name":"stdout","time":69.666224923,"data":"0 A mil long 49 s\n"}
+,{"stream_name":"stdout","time":238.680203506,"data":"pretrained ('A', 'src', 0.2) 9986 3.804 -\u003e 2.288 218 s\n"}
+,{"stream_name":"stdout","time":573.614478625,"data":"pretrained ('A', 'all', 0.2) 24457 3.701 -\u003e 2.498 553 s\n"}
+,{"stream_name":"stdout","time":910.059887023,"data":"pretrained ('A', 'all', 0.1) 24457 3.675 -\u003e 2.228 890 s\n"}
+,{"stream_name":"stdout","time":927.898112969,"data":"0 A pretrained arms 908 s\n"}
+,{"stream_name":"stdout","time":959.293146136,"data":"0 B mil long 939 s\n"}
+,{"stream_name":"stdout","time":1105.021186977,"data":"pretrained ('B', 'src', 0.2) 5931 3.798 -\u003e 2.234 1085 s\n"}
+,{"stream_name":"stdout","time":1455.33181814,"data":"pretrained ('B', 'all', 0.2) 24457 3.706 -\u003e 2.492 1435 s\n"}
+,{"stream_name":"stdout","time":1800.363323978,"data":"pretrained ('B', 'all', 0.1) 24457 3.674 -\u003e 2.199 1780 s\n"}
+,{"stream_name":"stdout","time":1830.033533512,"data":"0 B pretrained arms 1810 s\n"}
+,{"stream_name":"stdout","time":1851.693367124,"data":"0 C mil long 1831 s\n"}
+,{"stream_name":"stdout","time":2021.227666705,"data":"pretrained ('C', 'src', 0.2) 10484 3.922 -\u003e 2.336 2001 s\n"}
+,{"stream_name":"stdout","time":2359.772496295,"data":"pretrained ('C', 'all', 0.2) 24457 3.693 -\u003e 2.503 2339 s\n"}
+,{"stream_name":"stdout","time":2700.787528779,"data":"pretrained ('C', 'all', 0.1) 24457 3.671 -\u003e 2.232 2680 s\n"}
+,{"stream_name":"stdout","time":2719.454509167,"data":"0 C pretrained arms 2699 s\n"}
+,{"stream_name":"stdout","time":2769.854572314,"data":"0 D mil long 2749 s\n"}
+,{"stream_name":"stdout","time":2939.900318966,"data":"pretrained ('D', 'src', 0.2) 10355 3.789 -\u003e 2.284 2920 s\n"}
+,{"stream_name":"stdout","time":3276.35168704,"data":"pretrained ('D', 'all', 0.2) 24457 3.707 -\u003e 2.498 3256 s\n"}
+,{"stream_name":"stdout","time":3623.560066421,"data":"pretrained ('D', 'all', 0.1) 24457 3.675 -\u003e 2.224 3603 s\n"}
+,{"stream_name":"stdout","time":3651.552914481,"data":"0 D pretrained arms 3631 s\n"}
+,{"stream_name":"stdout","time":3692.657550432,"data":"1 A mil long 3672 s\n"}
+,{"stream_name":"stdout","time":3720.869162314,"data":"1 A pretrained arms 3700 s\n"}
+,{"stream_name":"stdout","time":3765.726107331,"data":"1 B mil long 3745 s\n"}
+,{"stream_name":"stdout","time":3799.258890347,"data":"1 B pretrained arms 3779 s\n"}
+,{"stream_name":"stdout","time":3839.526546982,"data":"1 C mil long 3819 s\n"}
+,{"stream_name":"stdout","time":3875.400845224,"data":"1 C pretrained arms 3855 s\n"}
+,{"stream_name":"stdout","time":3912.457580013,"data":"1 D mil long 3892 s\n"}
+,{"stream_name":"stdout","time":3942.568615137,"data":"1 D pretrained arms 3922 s\n"}
+,{"stream_name":"stdout","time":3986.528879118,"data":"2 A mil long 3966 s\n"}
+,{"stream_name":"stdout","time":4010.662614148,"data":"2 A pretrained arms 3990 s\n"}
+,{"stream_name":"stdout","time":4073.200531161,"data":"2 B mil long 4053 s\n"}
+,{"stream_name":"stdout","time":4134.014402078,"data":"2 B pretrained arms 4114 s\n"}
+,{"stream_name":"stdout","time":4177.553097768,"data":"2 C mil long 4157 s\n"}
+,{"stream_name":"stdout","time":4224.970674583,"data":"2 C pretrained arms 4205 s\n"}
+,{"stream_name":"stdout","time":4298.384672461,"data":"2 D mil long 4278 s\n"}
+,{"stream_name":"stdout","time":4346.125745552,"data":"2 D pretrained arms 4326 s\n"}
+,{"stream_name":"stdout","time":4346.143864028,"data":"done 4326 s\n"}
+,{"stream_name":"stderr","time":4351.567265294,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4351.567293425,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4351.814854332,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4351.814884982,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4352.574328433,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4353.522083814,"data":"[NbConvertApp] Writing 316477 bytes to __results__.html\n"}
+]
