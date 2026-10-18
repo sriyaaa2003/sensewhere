@@ -260,6 +260,60 @@ Per-class recall of the plain model at each unseen site (window readout):
 | H3 pipeline beats plain, window readout | 0.782 [0.730, 0.818] | 0.741 [0.707, 0.767] | 0.040 [0.014, 0.061] | 0.040 [0.009, 0.067] | yes |
 | H4 augmentation + pooling not worse than plain + pooling | 0.753 [0.714, 0.786] | 0.785 [0.742, 0.815] | -0.032 [-0.057, -0.001] | -0.032 [-0.064, 0.008] | no |
 
+# v3: exploratory sweeps (seeds 0 to 2; see docs/V3_PLAN.md; nothing here is a confirmed result)
+
+Letters: R representation, H head, M multitask, B backbone, T track-level model, P pretraining. All arms use plain training with the settings in the stage scripts; each differs from `base` in one thing.
+
+| arm | idea | track-vote balanced accuracy [95% CI] | vote diff vs base [95% CI] | window balanced accuracy [95% CI] |
+|---|---|---|---|---|
+| base | - | 0.788 [0.735, 0.826] | reference | 0.735 [0.692, 0.767] |
+| mobilenetv2 | B | 0.742 [0.692, 0.780] | -0.046 [-0.074, -0.018] | 0.673 [0.637, 0.701] |
+| resnet18 | B | 0.759 [0.712, 0.794] | -0.030 [-0.057, 0.001] | 0.706 [0.672, 0.735] |
+| hier_foot | H | 0.781 [0.721, 0.826] | -0.007 [-0.036, 0.020] | 0.744 [0.703, 0.777] |
+| hier_walk | H | 0.760 [0.716, 0.796] | -0.028 [-0.045, -0.005] | 0.727 [0.690, 0.756] |
+| moe_e2k1 | H | 0.762 [0.719, 0.795] | -0.026 [-0.055, 0.008] | 0.724 [0.690, 0.750] |
+| moe_e4k2 | H | 0.740 [0.704, 0.773] | -0.048 [-0.080, -0.006] | 0.720 [0.687, 0.748] |
+| moe_e8k1 | H | 0.765 [0.726, 0.796] | -0.023 [-0.050, 0.011] | 0.721 [0.688, 0.747] |
+| moe_e8k2 | H | 0.760 [0.721, 0.789] | -0.028 [-0.053, 0.000] | 0.735 [0.701, 0.761] |
+| multitask_w05 | M | 0.773 [0.721, 0.812] | -0.015 [-0.039, 0.010] | 0.736 [0.700, 0.764] |
+| multitask_w1 | M | 0.740 [0.690, 0.779] | -0.048 [-0.076, -0.019] | 0.702 [0.664, 0.731] |
+| con_all_ft | P | 0.778 [0.731, 0.816] | -0.010 [-0.038, 0.024] | 0.748 [0.713, 0.777] |
+| con_src_ft | P | 0.762 [0.722, 0.795] | -0.026 [-0.056, 0.010] | 0.731 [0.697, 0.759] |
+| con_src_mil_attn | P | 0.750 [0.702, 0.790] | -0.038 [-0.065, -0.001] | n/a (track model) |
+| aligned | R | 0.757 [0.714, 0.795] | -0.031 [-0.069, 0.015] | 0.714 [0.681, 0.743] |
+| aligned_stretch | R | 0.716 [0.680, 0.747] | -0.072 [-0.100, -0.036] | 0.670 [0.637, 0.697] |
+| ctx3 | R | 0.757 [0.703, 0.800] | -0.031 [-0.059, -0.003] | 0.740 [0.694, 0.776] |
+| ctx3_aligned | R | 0.688 [0.650, 0.723] | -0.100 [-0.139, -0.045] | 0.673 [0.640, 0.703] |
+| stretch | R | 0.751 [0.700, 0.796] | -0.037 [-0.071, 0.003] | 0.718 [0.679, 0.752] |
+| mil_attn | T | 0.724 [0.682, 0.760] | -0.064 [-0.100, -0.019] | n/a (track model) |
+| mil_attn_aligned | T | 0.664 [0.629, 0.698] | -0.124 [-0.155, -0.082] | n/a (track model) |
+| mil_attn_stretch | T | 0.688 [0.645, 0.725] | -0.100 [-0.132, -0.057] | n/a (track model) |
+| mil_gru | T | 0.724 [0.680, 0.767] | -0.064 [-0.098, -0.023] | n/a (track model) |
+
+Candidate selected by the pre-fixed rule: **base** (highest track-vote balanced accuracy 0.788 by `base`; ties within 0.005 go to the simpler arm). Category winners: {'B': 'resnet18', 'H': 'hier_foot', 'M': 'multitask_w05', 'P': 'con_all_ft', 'R': 'aligned', 'T': 'mil_attn'}.
+
+
+Per-class recall (track vote) by arm and held-out site, to see where the walking vs dual-hand confusion moves (site B is where walkers are slower than carriers):
+
+| arm | site | walking recall | dual-hand load recall | on wheels recall |
+|---|---|---|---|---|
+| base | A | 0.737 | 0.704 | 0.977 |
+| base | B | 0.640 | 0.794 | 0.990 |
+| base | C | 0.945 | 0.336 | 1.000 |
+| base | D | 0.569 | 0.832 | 0.933 |
+| aligned | A | 0.517 | 0.733 | 0.990 |
+| aligned | B | 0.395 | 0.864 | 0.947 |
+| aligned | C | 0.828 | 0.527 | 0.987 |
+| aligned | D | 0.491 | 0.869 | 0.942 |
+| stretch | A | 0.598 | 0.784 | 0.992 |
+| stretch | B | 0.377 | 0.842 | 0.991 |
+| stretch | C | 0.864 | 0.456 | 1.000 |
+| stretch | D | 0.720 | 0.661 | 0.727 |
+| ctx3 | A | 0.649 | 0.775 | 0.985 |
+| ctx3 | B | 0.581 | 0.730 | 0.921 |
+| ctx3 | C | 0.901 | 0.342 | 1.000 |
+| ctx3 | D | 0.692 | 0.735 | 0.777 |
+
 ## v2-3. Adding the single-hand-load class (BatchNorm statistics now frozen with the backbone; prototype extension added)
 
 ncm = nearest class mean on the base model embedding: old classes keep one stored mean each, the new class is the mean of N labeled windows; nothing is retrained.

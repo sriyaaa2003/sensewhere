@@ -1,0 +1,12 @@
+{
+ "candidate": "base",
+ "top_arm": "base",
+ "category_winners": {
+  "B": "resnet18",
+  "H": "hier_foot",
+  "M": "multitask_w05",
+  "P": "con_all_ft",
+  "R": "aligned",
+  "T": "mil_attn"
+ }
+}

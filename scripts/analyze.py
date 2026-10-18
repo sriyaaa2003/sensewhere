@@ -509,14 +509,15 @@ def stage_v3():
     arms = sorted({k.split("|")[0] for s in preds for k in preds[s]}, key=lambda a: (V3_CATEGORY.get(a, "Z"), a))
     ref = "base|none|vote"
     sub = {s: {k: v for k, v in preds[s].items() if k.endswith("|vote") or k.endswith("|window")} for s in preds}
-    res = analysis.multi_site_bootstrap(y, subj, sub, 3, reference=ref, n_boot=N_BOOT)
+    have_ref = any(ref in sub[s] for s in sub)
+    res = analysis.multi_site_bootstrap(y, subj, sub, 3, reference=ref if have_ref else None, n_boot=N_BOOT)
     out = []
     for a in arms:
         v, w = res.get(f"{a}|none|vote"), res.get(f"{a}|none|window")
         if v is None:
             continue
         out.append({"arm": a, "idea": V3_CATEGORY.get(a, "?"), "track-vote balanced accuracy [95% CI]": fmt(v),
-                    "vote diff vs base [95% CI]": fmt(v, "diff", "diff_lo", "diff_hi") if a != "base" else "reference",
+                    "vote diff vs base [95% CI]": ("reference" if a == "base" else fmt(v, "diff", "diff_lo", "diff_hi")) if have_ref else "base not run yet",
                     "window balanced accuracy [95% CI]": fmt(w) if w else "n/a (track model)"})
     df = pd.DataFrame(out)
     df.to_csv(T / "v3_arms.csv", index=False)

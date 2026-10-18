@@ -1,0 +1,76 @@
+[{"stream_name":"stdout","time":29.900454121,"data":"0 A mil_attn 13 s\n"}
+,{"stream_name":"stdout","time":37.159122322,"data":"0 A mil_gru 20 s\n"}
+,{"stream_name":"stdout","time":44.242373998,"data":"0 A mil_attn_aligned 27 s\n"}
+,{"stream_name":"stdout","time":50.249213156,"data":"0 A mil_attn_stretch 33 s\n"}
+,{"stream_name":"stdout","time":111.409846394,"data":"pretrained ('A', 'src') 9986 3.805 -\u003e 2.564 94 s\n"}
+,{"stream_name":"stdout","time":238.570209658,"data":"pretrained ('A', 'all') 24457 3.704 -\u003e 2.641 221 s\n"}
+,{"stream_name":"stdout","time":246.002286507,"data":"0 A pretrained arms 229 s\n"}
+,{"stream_name":"stdout","time":249.261455019,"data":"0 B mil_attn 232 s\n"}
+,{"stream_name":"stdout","time":254.633431029,"data":"0 B mil_gru 237 s\n"}
+,{"stream_name":"stdout","time":259.139763585,"data":"0 B mil_attn_aligned 242 s\n"}
+,{"stream_name":"stdout","time":266.597548894,"data":"0 B mil_attn_stretch 249 s\n"}
+,{"stream_name":"stdout","time":319.048765512,"data":"pretrained ('B', 'src') 5931 3.796 -\u003e 2.528 302 s\n"}
+,{"stream_name":"stdout","time":452.336785732,"data":"pretrained ('B', 'all') 24457 3.702 -\u003e 2.655 435 s\n"}
+,{"stream_name":"stdout","time":465.246282806,"data":"0 B pretrained arms 448 s\n"}
+,{"stream_name":"stdout","time":474.945239714,"data":"0 C mil_attn 458 s\n"}
+,{"stream_name":"stdout","time":479.849288275,"data":"0 C mil_gru 463 s\n"}
+,{"stream_name":"stdout","time":484.677353389,"data":"0 C mil_attn_aligned 467 s\n"}
+,{"stream_name":"stdout","time":488.445958661,"data":"0 C mil_attn_stretch 471 s\n"}
+,{"stream_name":"stdout","time":549.938218128,"data":"pretrained ('C', 'src') 10484 3.915 -\u003e 2.61 533 s\n"}
+,{"stream_name":"stdout","time":678.013256276,"data":"pretrained ('C', 'all') 24457 3.698 -\u003e 2.636 661 s\n"}
+,{"stream_name":"stdout","time":691.79318874,"data":"0 C pretrained arms 675 s\n"}
+,{"stream_name":"stdout","time":697.402013657,"data":"0 D mil_attn 680 s\n"}
+,{"stream_name":"stdout","time":702.373706455,"data":"0 D mil_gru 685 s\n"}
+,{"stream_name":"stdout","time":706.864479467,"data":"0 D mil_attn_aligned 690 s\n"}
+,{"stream_name":"stdout","time":712.423879567,"data":"0 D mil_attn_stretch 695 s\n"}
+,{"stream_name":"stdout","time":773.724883417,"data":"pretrained ('D', 'src') 10355 3.778 -\u003e 2.582 757 s\n"}
+,{"stream_name":"stdout","time":904.262228169,"data":"pretrained ('D', 'all') 24457 3.701 -\u003e 2.65 887 s\n"}
+,{"stream_name":"stdout","time":919.616715523,"data":"0 D pretrained arms 902 s\n"}
+,{"stream_name":"stdout","time":925.719267316,"data":"1 A mil_attn 909 s\n"}
+,{"stream_name":"stdout","time":930.625029425,"data":"1 A mil_gru 913 s\n"}
+,{"stream_name":"stdout","time":935.771764502,"data":"1 A mil_attn_aligned 919 s\n"}
+,{"stream_name":"stdout","time":942.18241924,"data":"1 A mil_attn_stretch 925 s\n"}
+,{"stream_name":"stdout","time":957.877796083,"data":"1 A pretrained arms 941 s\n"}
+,{"stream_name":"stdout","time":962.878528144,"data":"1 B mil_attn 946 s\n"}
+,{"stream_name":"stdout","time":971.024667345,"data":"1 B mil_gru 954 s\n"}
+,{"stream_name":"stdout","time":977.242765754,"data":"1 B mil_attn_aligned 960 s\n"}
+,{"stream_name":"stdout","time":983.695119832,"data":"1 B mil_attn_stretch 966 s\n"}
+,{"stream_name":"stdout","time":1008.04584949,"data":"1 B pretrained arms 991 s\n"}
+,{"stream_name":"stdout","time":1018.029914559,"data":"1 C mil_attn 1001 s\n"}
+,{"stream_name":"stdout","time":1027.581870833,"data":"1 C mil_gru 1010 s\n"}
+,{"stream_name":"stdout","time":1032.051210624,"data":"1 C mil_attn_aligned 1015 s\n"}
+,{"stream_name":"stdout","time":1037.888201068,"data":"1 C mil_attn_stretch 1021 s\n"}
+,{"stream_name":"stdout","time":1054.975191056,"data":"1 C pretrained arms 1038 s\n"}
+,{"stream_name":"stdout","time":1061.788901181,"data":"1 D mil_attn 1045 s\n"}
+,{"stream_name":"stdout","time":1073.977687212,"data":"1 D mil_gru 1057 s\n"}
+,{"stream_name":"stdout","time":1079.386198937,"data":"1 D mil_attn_aligned 1062 s\n"}
+,{"stream_name":"stdout","time":1085.450171964,"data":"1 D mil_attn_stretch 1068 s\n"}
+,{"stream_name":"stdout","time":1100.001198683,"data":"1 D pretrained arms 1083 s\n"}
+,{"stream_name":"stdout","time":1105.481940062,"data":"2 A mil_attn 1088 s\n"}
+,{"stream_name":"stdout","time":1112.889225597,"data":"2 A mil_gru 1096 s\n"}
+,{"stream_name":"stdout","time":1121.636496349,"data":"2 A mil_attn_aligned 1104 s\n"}
+,{"stream_name":"stdout","time":1126.139817063,"data":"2 A mil_attn_stretch 1109 s\n"}
+,{"stream_name":"stdout","time":1143.898151458,"data":"2 A pretrained arms 1127 s\n"}
+,{"stream_name":"stdout","time":1150.829466464,"data":"2 B mil_attn 1134 s\n"}
+,{"stream_name":"stdout","time":1160.31783187,"data":"2 B mil_gru 1143 s\n"}
+,{"stream_name":"stdout","time":1166.708963842,"data":"2 B mil_attn_aligned 1150 s\n"}
+,{"stream_name":"stdout","time":1172.886741555,"data":"2 B mil_attn_stretch 1156 s\n"}
+,{"stream_name":"stdout","time":1190.693845216,"data":"2 B pretrained arms 1173 s\n"}
+,{"stream_name":"stdout","time":1199.762320071,"data":"2 C mil_attn 1183 s\n"}
+,{"stream_name":"stdout","time":1205.459817639,"data":"2 C mil_gru 1188 s\n"}
+,{"stream_name":"stdout","time":1209.506264078,"data":"2 C mil_attn_aligned 1192 s\n"}
+,{"stream_name":"stdout","time":1216.456487368,"data":"2 C mil_attn_stretch 1199 s\n"}
+,{"stream_name":"stdout","time":1245.591560216,"data":"2 C pretrained arms 1228 s\n"}
+,{"stream_name":"stdout","time":1249.719367845,"data":"2 D mil_attn 1233 s\n"}
+,{"stream_name":"stdout","time":1256.98848059,"data":"2 D mil_gru 1240 s\n"}
+,{"stream_name":"stdout","time":1261.04476304,"data":"2 D mil_attn_aligned 1244 s\n"}
+,{"stream_name":"stdout","time":1267.950560254,"data":"2 D mil_attn_stretch 1251 s\n"}
+,{"stream_name":"stdout","time":1287.423164468,"data":"2 D pretrained arms 1270 s\n"}
+,{"stream_name":"stdout","time":1287.43659992,"data":"done 1270 s\n"}
+,{"stream_name":"stderr","time":1292.36124247,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1292.361265813,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1292.600869088,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1292.600907852,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1293.332177802,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1294.218729719,"data":"[NbConvertApp] Writing 315247 bytes to __results__.html\n"}
+]

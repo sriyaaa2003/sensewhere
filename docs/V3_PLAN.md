@@ -26,3 +26,14 @@ Goal: raise balanced accuracy at an unseen site above the v2 baseline (plain CNN
 | A | Source-free adaptation on the best model | as v2 |
 
 Combinations: after the single-factor sweeps, a restricted grid over the winners of R, H, M, B, P1, T.
+
+## Addendum 1 (written after the stage D and E sweeps, before any probability-level analysis)
+
+What the sweeps showed (exploratory seeds 0 to 2): the plain CNN with track pooling (0.788) was not beaten by any of the 23 variants; the pre-fixed selection rule therefore selects `base`. Seed ensembles gave +0.013 with an interval spanning zero, diverse ensembles nothing. About half of the foot tracks are classified correctly by some models or seeds and wrongly by others, and each site is wrong in its own direction (site C calls dual-hand tracks walking, site D the reverse). That points at a per-site shift of the walking vs dual-hand decision boundary.
+
+New idea, stage G (exploratory, seeds 0 to 2) and stage H (confirmatory, seeds 10 to 14, same code):
+
+* **Source-free boundary recalibration.** Use only the unlabeled target tracks' model outputs to move the walking vs dual-hand boundary: (M1) EM prior estimation (Saerens et al.), (M2) re-centre the score so half of the foot tracks fall on each side, (M3) place the boundary at the valley of a two-component mixture fitted to the foot-track scores, (M4) re-centre on the mean score. On seeds 0 to 2 the method with the best mean track-vote balanced accuracy is chosen; if none beats no recalibration on those seeds, none is confirmed.
+* **Seed ensemble.** Average the log-probabilities of the models of the 5 confirmatory seeds before track pooling.
+
+Confirmatory hypotheses on seeds 10 to 14 (95% subject-clustered intervals; Bonferroni intervals reported): **H7** the chosen recalibration beats plain base with track pooling (mean over the 5 seeds' single models); **H8** the 5-seed ensemble beats the mean single model; **H9** the ensemble plus the chosen recalibration beats the mean single model. Conformal prediction sets are reported descriptively (coverage at the unseen site against the nominal level), with no hypothesis.
