@@ -468,7 +468,7 @@ def stageC():
         rbf = analysis.multi_site_bootstrap(y, subj, sub, 3, reference=b, n_boot=N_BOOT, ci=100 * (1 - 0.05 / 4))
         confirmed = r95[a]["diff_lo"] > 0
         out.append({"hypothesis": name, "A [95% CI]": fmt(r95[a]), "B [95% CI]": fmt(r95[b]), "A - B [95% CI]": fmt(r95[a], "diff", "diff_lo", "diff_hi"),
-                    "A - B [Bonferroni 99.4% CI]": fmt(rbf[a], "diff", "diff_lo", "diff_hi"), "95% interval excludes zero": "yes" if confirmed else "no"})
+                    "A - B [Bonferroni 99.4% CI]": fmt(rbf[a], "diff", "diff_lo", "diff_hi"), "confirmed (95% interval entirely above zero)": "yes" if confirmed else "no"})
     df = pd.DataFrame(out)
     df.to_csv(T / "v2_confirmation.csv", index=False)
     md.append(chr(10) + "## v2-5. Confirmatory run on fresh seeds 3 to 7 (hypotheses fixed in docs/CONFIRMATION.md before the run)" + chr(10))

@@ -22,6 +22,8 @@ A radio network can sense moving people and objects (integrated sensing and comm
 * **An apparent pipeline gain did not replicate.** On the exploratory seeds, noise-floor transplant + BatchNorm-only SHOT + track pooling looked 3.5 points better than plain training with track pooling. That pipeline was picked after looking at many combinations, so I tested it on fresh seeds: the difference is {{v2_confirmation|hypothesis=H2 pipeline beats plain + track pooling|A - B [95% CI]}}, i.e. nothing beyond pooling. Augmentation with pooling, which looked best on the exploratory seeds, is {{v2_confirmation|hypothesis=H4 augmentation + pooling not worse than plain + pooling|A - B [95% CI]}} against plain with pooling on the fresh seeds. Both early advantages were selection noise.
 * **Adding a class without retraining works about as well as replay.** A prototype extension (one stored mean embedding per old class, the new class from a few labeled windows) reaches joint balanced accuracy {{v2_extension|method=ncm|shots=5|joint balanced accuracy [95% CI]}} with 5 labeled windows and nothing trained, against {{v2_extension|method=flat|backbone=frozen|replay=0.05|joint balanced accuracy [95% CI]}} for head expansion with 5% replay. Fine-tuning the backbone without replay is catastrophic (old-class drop {{v2_extension|method=flat|backbone=finetune|replay=0.0|old-class drop [95% CI]}}).
 * **The Wi-Fi replication differs.** On Widar, CORAL and DANN beat plain training by {{widar_dg|training method=coral|paired difference vs ERM [95% CI]}}, and BatchNorm adaptation helps about one point.
+* **Viewing geometry fingerprints a site better than the radar image does, and it explains part of the errors.** Approach angle, speed and range alone identify site B with AUC {{geometry_site_auc|site=B|AUC from geometry alone}}. At site B walkers are slower than dual-hand carriers ({{geometry_speed_shortcut|site=B|walking minus dual-hand}} m/s; the other sites are +0.13 to +0.22), and walking recall there is {{geometry_speed_shortcut|site=B|walking recall}}. That is consistent with a speed shortcut, but four sites make it suggestive only (`docs/GEOMETRY.md`).
+* **About thirty further ideas were tried after the confirmed result and none confirmed** (next section).
 
 ## Results
 
@@ -39,6 +41,20 @@ Class extension (single-hand load added to the 3-class model):
 
 {{TABLE:v2_extension}}
 
+### After the confirmed result: about thirty more ideas, none confirmed
+
+I then tried to beat plain training with track pooling using ideas drawn from the radar physics and the dataset's structure (`docs/V3_PLAN.md`): torso-aligned inputs, Doppler-stretch augmentation, 3-second context, two tree topologies and mixture-of-experts heads with 2, 4 and 8 experts, multitask training on the 12 fine activities, ResNet-18 and MobileNetV2, attention and GRU track models, track-contrastive pretraining, seed and variant ensembles, and source-free recalibration of the walking vs dual-hand boundary. On the exploratory seeds none of the 23 single-factor arms beat the baseline (`docs/RESULTS.md`, section v3); several were clearly worse. The plan, selection rule and hypotheses were committed before the runs, and the candidates were then tested on fresh seeds 10 to 14.
+
+Recalibration, ensembles and ensemble plus recalibration (family of five tests with the two below, so 99% Bonferroni intervals are in `docs/RECAL.md`):
+
+{{TABLE:recal_confirmation}}
+
+Contrastive pretraining (H5) and the track-level GRU (H6):
+
+{{TABLE:recal_confirmation_I}}
+
+The recalibration looked like a +0.04 gain on the design seeds and measured {{recal_confirmation|hypothesis=H7 median recalibration beats plain base (single models)|A - B [95% CI]}} on fresh seeds: a textbook winner's curse, which is why the confirmation step exists. About half of the foot tracks are classified right by some models and wrong by others while only about 5% are wrong for every model, so the remaining error is mostly variance near the walking vs dual-hand boundary and no variation I tried reduced it reliably.
+
 Full tables, adaptation results and error analysis: [docs/RESULTS.md](docs/RESULTS.md).
 
 ## What did not work, stated plainly
@@ -48,6 +64,8 @@ Full tables, adaptation results and error analysis: [docs/RESULTS.md](docs/RESUL
 * Masked-reconstruction pretraining on 24,457 unlabeled windows gave no significant window-level gain.
 * The single-hand-load class stays hard: every method that keeps the old classes intact recognises it only a minority of the time. The higher new-class recalls in the extension table appear only where the model forgets the old classes (no-replay fine-tuning), so they are not a win.
 * Flat, tree and mixture-of-experts heads are not distinguishable on the 12 fine activities: balanced accuracy {{heads|head=flat|12-activity balanced accuracy [95% CI]}} (flat), {{heads|head=hier|12-activity balanced accuracy [95% CI]}} (tree), {{heads|head=moe|12-activity balanced accuracy [95% CI]}} (mixture of experts).
+* Track-level multiple-instance models (attention and GRU pooling over the windows of a track) are worse than simply averaging a window model's predictions: the GRU is {{recal_confirmation_I|hypothesis=H6 track-level GRU beats base|A - B [95% CI]}} against the baseline on the fresh seeds.
+* Torso alignment (removing the walking speed) and Doppler-stretch augmentation, built to remove a suspected speed shortcut, lowered accuracy in the sweep; alignment raised dual-hand recall but lowered walking recall by more.
 * Source-site validation is a weak guide to accuracy at a new site (correlation about 0.3 between the two), so single comparisons of close arms are not trustworthy; that is why intervals resample subjects and why the final claims come from a confirmatory run whose hypotheses were fixed in advance.
 
 ## v1 to v2

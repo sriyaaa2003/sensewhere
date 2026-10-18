@@ -1,0 +1,4 @@
+hypothesis,A [95% CI],B [95% CI],A - B [95% CI],A - B [Bonferroni 98.3% CI],confirmed (95% interval entirely above zero)
+H7 median recalibration beats plain base (single models),"0.788 [0.732, 0.830]","0.782 [0.736, 0.817]","+0.006 [-0.013, +0.025]","+0.006 [-0.017, +0.029]",no
+H8 5-seed ensemble beats the mean single model,"0.801 [0.741, 0.849]","0.782 [0.736, 0.817]","+0.019 [-0.012, +0.046]","+0.019 [-0.017, +0.053]",no
+H9 ensemble + median beats the mean single model,"0.802 [0.742, 0.847]","0.782 [0.736, 0.817]","+0.019 [-0.016, +0.053]","+0.019 [-0.025, +0.056]",no

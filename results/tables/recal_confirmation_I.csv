@@ -1,0 +1,3 @@
+hypothesis,A [95% CI],B [95% CI],A - B [95% CI],A - B [Bonferroni 99% CI],confirmed (95% interval entirely above zero)
+H5 source-only contrastive pretraining beats base,"0.774 [0.732, 0.809]","0.782 [0.736, 0.817]","-0.009 [-0.033, +0.024]","-0.009 [-0.039, +0.033]",no
+H6 track-level GRU beats base,"0.731 [0.691, 0.769]","0.782 [0.736, 0.817]","-0.051 [-0.077, -0.022]","-0.051 [-0.084, -0.013]",no

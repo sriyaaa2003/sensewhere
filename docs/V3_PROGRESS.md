@@ -1,8 +1,10 @@
-# v3 progress log (kept so work can resume after an interruption)
+# v3 progress log
 
-State at the time of writing:
+Status: complete. Plan and hypotheses were committed before each experiment (docs/V3_PLAN.md and its two addenda).
 
-* Plan and confirmation rules: docs/V3_PLAN.md (committed before any v3 experiment ran).
-* Geometry diagnostic done: docs/GEOMETRY.md (site AUC from geometry alone up to 0.94; walking recall lowest at the site where walkers are slower than carriers).
-* Running on Kaggle: stageD (representations, heads, multitask, backbones) and stageE (track models, track-contrastive pretraining), seeds 0 to 2.
-* Next: `kaggle kernels output` for saf2003/sensewhere-staged and saf2003/sensewhere-stagee into results/stageD and results/stageE (set PYTHONUTF8=1), run `python scripts/analyze.py`, read the v3 section of docs/RESULTS.md, apply the selection rule, then build stageF (combinations of the category winners, conformal sets, adaptation) and the confirmatory stageG on seeds 10 to 14.
+* Geometry diagnostic: docs/GEOMETRY.md.
+* Exploratory sweeps (stages D, E, F, seeds 0 to 2): 23 single-factor arms; none beat the baseline.
+* Design of boundary recalibration (stage G, seeds 0 to 2) and confirmation (stage H, seeds 10 to 14): H7, H8, H9 not confirmed.
+* Confirmation of the stage F candidates (stage I, seeds 10 to 14): H5 not confirmed, H6 clearly worse than the baseline.
+* The only confirmed effect in the whole project remains track pooling (docs/CONFIRMATION.md, H1).
+* Reproduce: kaggle/* scripts, then `python scripts/analyze.py`, `python scripts/analyze_geometry.py`, `python scripts/analyze_recal.py`, `python scripts/make_readme.py`.

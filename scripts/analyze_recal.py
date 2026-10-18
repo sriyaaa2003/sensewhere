@@ -117,12 +117,42 @@ if H is not None and selected is not None:
         r95 = analysis.multi_site_bootstrap(y, subj, sub, 3, reference=b, n_boot=N_BOOT, ci=95.0)
         rbf = analysis.multi_site_bootstrap(y, subj, sub, 3, reference=b, n_boot=N_BOOT, ci=100 * (1 - 0.05 / 3))
         out.append({"hypothesis": name, "A [95% CI]": fmt(r95[a]), "B [95% CI]": fmt(r95[b]), "A - B [95% CI]": fmt(r95[a], "diff", "diff_lo", "diff_hi"),
-                    "A - B [Bonferroni 98.3% CI]": fmt(rbf[a], "diff", "diff_lo", "diff_hi"), "95% interval excludes zero": "yes" if r95[a]["diff_lo"] > 0 else "no"})
+                    "A - B [Bonferroni 98.3% CI]": fmt(rbf[a], "diff", "diff_lo", "diff_hi"), "confirmed (95% interval entirely above zero)": "yes" if r95[a]["diff_lo"] > 0 else "no"})
     df = pd.DataFrame(out)
     df.to_csv(T / "recal_confirmation.csv", index=False)
     lines += [f"## Confirmation on fresh seeds {seeds} (stage H)", "", md(df), ""]
     lines += ["### Conformal sets on the confirmatory seeds (nominal coverage 0.90)", "", md(conformal_table(H, seeds)), ""]
 elif H is not None:
     lines += ["## Confirmation (stage H)", "", "No recalibration method beat no recalibration on the design seeds, so none was carried to confirmation (as pre-specified).", ""]
+
+# ---- stage I: H5 (pretraining) and H6 (track-level GRU) against the stage H base models on the same seeds and splits
+I = load("I")
+if I is not None and H is not None:
+    seeds = sorted({int(k.split("|")[2]) for k in I if k.startswith("lp_te|")})
+    sites = sorted({k.split("|")[1] for k in I if k.startswith("lp_te|")})
+    y = {s: H[f"y|{s}"] for s in sites}
+    subj = {s: H[f"subject|{s}"] for s in sites}
+    preds = {s: {} for s in sites}
+    for s in sites:
+        trk = H[f"track|{s}"]
+        assert (I[f"track|{s}"] == trk).all()
+        base, con, mil = [], [], []
+        for sd in seeds:
+            P, inv = recal.track_mean_probs(H[f"lp_te|{s}|{sd}"].astype(np.float64), trk)
+            base.append(recal.METHODS["none"](P)[inv])
+            P, inv = recal.track_mean_probs(I[f"lp_te|{s}|{sd}"].astype(np.float64), trk)
+            con.append(recal.METHODS["none"](P)[inv])
+            mil.append(I[f"mil_gru_long|{s}|{sd}"].astype(int))
+        preds[s] = {"base": np.stack(base), "con_src_long_ft": np.stack(con), "mil_gru_long": np.stack(mil)}
+    out = []
+    for name, a in (("H5 source-only contrastive pretraining beats base", "con_src_long_ft"), ("H6 track-level GRU beats base", "mil_gru_long")):
+        sub = {s: {a: preds[s][a], "base": preds[s]["base"]} for s in preds}
+        r95 = analysis.multi_site_bootstrap(y, subj, sub, 3, reference="base", n_boot=N_BOOT, ci=95.0)
+        rbf = analysis.multi_site_bootstrap(y, subj, sub, 3, reference="base", n_boot=N_BOOT, ci=100 * (1 - 0.05 / 5))
+        out.append({"hypothesis": name, "A [95% CI]": fmt(r95[a]), "B [95% CI]": fmt(r95["base"]), "A - B [95% CI]": fmt(r95[a], "diff", "diff_lo", "diff_hi"),
+                    "A - B [Bonferroni 99% CI]": fmt(rbf[a], "diff", "diff_lo", "diff_hi"), "confirmed (95% interval entirely above zero)": "yes" if r95[a]["diff_lo"] > 0 else "no"})
+    df = pd.DataFrame(out)
+    df.to_csv(T / "recal_confirmation_I.csv", index=False)
+    lines += [f"## Confirmation of the stage F candidates on fresh seeds {seeds} (stage I; family of five tests, so 99% Bonferroni intervals)", "", md(df), ""]
 (ROOT / "docs" / "RECAL.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 print("wrote docs/RECAL.md")

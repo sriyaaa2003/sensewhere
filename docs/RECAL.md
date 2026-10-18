@@ -38,3 +38,27 @@ Rule: the recalibration with the highest mean single-model balanced accuracy is 
 | C | 0.769 | 1.146 | 0.854 | 0.737 |
 | D | 0.895 | 1.271 | 0.729 | 0.886 |
 
+## Confirmation on fresh seeds [10, 11, 12, 13, 14] (stage H)
+
+| hypothesis | A [95% CI] | B [95% CI] | A - B [95% CI] | A - B [Bonferroni 98.3% CI] | confirmed (95% interval entirely above zero) |
+|---|---|---|---|---|---|
+| H7 median recalibration beats plain base (single models) | 0.788 [0.732, 0.830] | 0.782 [0.736, 0.817] | +0.006 [-0.013, +0.025] | +0.006 [-0.017, +0.029] | no |
+| H8 5-seed ensemble beats the mean single model | 0.801 [0.741, 0.849] | 0.782 [0.736, 0.817] | +0.019 [-0.012, +0.046] | +0.019 [-0.017, +0.053] | no |
+| H9 ensemble + median beats the mean single model | 0.802 [0.742, 0.847] | 0.782 [0.736, 0.817] | +0.019 [-0.016, +0.053] | +0.019 [-0.025, +0.056] | no |
+
+### Conformal sets on the confirmatory seeds (nominal coverage 0.90)
+
+| site | coverage | mean_set_size | singleton_share | singleton_accuracy |
+|---|---|---|---|---|
+| A | 0.913 | 1.428 | 0.585 | 0.868 |
+| B | 0.892 | 1.225 | 0.784 | 0.874 |
+| C | 0.821 | 1.219 | 0.789 | 0.781 |
+| D | 0.877 | 1.360 | 0.657 | 0.833 |
+
+## Confirmation of the stage F candidates on fresh seeds [10, 11, 12, 13, 14] (stage I; family of five tests, so 99% Bonferroni intervals)
+
+| hypothesis | A [95% CI] | B [95% CI] | A - B [95% CI] | A - B [Bonferroni 99% CI] | confirmed (95% interval entirely above zero) |
+|---|---|---|---|---|---|
+| H5 source-only contrastive pretraining beats base | 0.774 [0.732, 0.809] | 0.782 [0.736, 0.817] | -0.009 [-0.033, +0.024] | -0.009 [-0.039, +0.033] | no |
+| H6 track-level GRU beats base | 0.731 [0.691, 0.769] | 0.782 [0.736, 0.817] | -0.051 [-0.077, -0.022] | -0.051 [-0.084, -0.013] | no |
+

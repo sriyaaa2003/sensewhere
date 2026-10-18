@@ -253,7 +253,7 @@ Per-class recall of the plain model at each unseen site (window readout):
 
 ## v2-5. Confirmatory run on fresh seeds 3 to 7 (hypotheses fixed in docs/CONFIRMATION.md before the run)
 
-| hypothesis | A [95% CI] | B [95% CI] | A - B [95% CI] | A - B [Bonferroni 99.4% CI] | 95% interval excludes zero |
+| hypothesis | A [95% CI] | B [95% CI] | A - B [95% CI] | A - B [Bonferroni 99.4% CI] | confirmed (95% interval entirely above zero) |
 |---|---|---|---|---|---|
 | H1 track pooling raises plain training | 0.785 [0.742, 0.815] | 0.741 [0.707, 0.767] | 0.044 [0.029, 0.058] | 0.044 [0.025, 0.062] | yes |
 | H2 pipeline beats plain + track pooling | 0.782 [0.730, 0.818] | 0.785 [0.742, 0.815] | -0.003 [-0.028, 0.017] | -0.003 [-0.036, 0.023] | no |

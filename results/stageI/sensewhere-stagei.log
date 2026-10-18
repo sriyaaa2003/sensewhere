@@ -1,0 +1,32 @@
+[{"stream_name":"stdout","time":226.178820476,"data":"pretrained ('A', 'src', 0.2) 9986 3.753 -\u003e 2.305 203 s\n"}
+,{"stream_name":"stdout","time":231.013469485,"data":"10 A 208 s\n"}
+,{"stream_name":"stdout","time":407.267799857,"data":"pretrained ('B', 'src', 0.2) 5931 3.817 -\u003e 2.223 384 s\n"}
+,{"stream_name":"stdout","time":417.508777048,"data":"10 B 395 s\n"}
+,{"stream_name":"stdout","time":608.444248929,"data":"pretrained ('C', 'src', 0.2) 10484 3.87 -\u003e 2.326 586 s\n"}
+,{"stream_name":"stdout","time":612.91128212,"data":"10 C 590 s\n"}
+,{"stream_name":"stdout","time":815.26487225,"data":"pretrained ('D', 'src', 0.2) 10355 3.747 -\u003e 2.296 792 s\n"}
+,{"stream_name":"stdout","time":821.724091614,"data":"10 D 799 s\n"}
+,{"stream_name":"stdout","time":836.793571013,"data":"11 A 814 s\n"}
+,{"stream_name":"stdout","time":896.136176634,"data":"11 B 873 s\n"}
+,{"stream_name":"stdout","time":931.9655145,"data":"11 C 909 s\n"}
+,{"stream_name":"stdout","time":980.860014834,"data":"11 D 958 s\n"}
+,{"stream_name":"stdout","time":1001.298434063,"data":"12 A 978 s\n"}
+,{"stream_name":"stdout","time":1024.384710083,"data":"12 B 1001 s\n"}
+,{"stream_name":"stdout","time":1060.889528232,"data":"12 C 1038 s\n"}
+,{"stream_name":"stdout","time":1088.117212769,"data":"12 D 1065 s\n"}
+,{"stream_name":"stdout","time":1119.142663093,"data":"13 A 1096 s\n"}
+,{"stream_name":"stdout","time":1147.750714265,"data":"13 B 1125 s\n"}
+,{"stream_name":"stdout","time":1167.89149883,"data":"13 C 1145 s\n"}
+,{"stream_name":"stdout","time":1200.724382103,"data":"13 D 1178 s\n"}
+,{"stream_name":"stdout","time":1224.128270082,"data":"14 A 1201 s\n"}
+,{"stream_name":"stdout","time":1248.130931066,"data":"14 B 1225 s\n"}
+,{"stream_name":"stdout","time":1271.654905056,"data":"14 C 1249 s\n"}
+,{"stream_name":"stdout","time":1295.548040998,"data":"14 D 1273 s\n"}
+,{"stream_name":"stdout","time":1295.559597962,"data":"done 1273 s\n"}
+,{"stream_name":"stderr","time":1302.197006012,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1302.19703634,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1302.528322958,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1302.528350087,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1303.418927879,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1304.536615072,"data":"[NbConvertApp] Writing 309636 bytes to __results__.html\n"}
+]
